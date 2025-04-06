@@ -61,3 +61,13 @@ client.on('messageCreate', async message => {
 
 // Log bot in with your token
 client.login('MTM1ODIwNjM1Mzg3Mjc4MTQ0NA.GBictf.ZXcsvTh9SPX-ftiD8X8boVsAkAW5nreFRamhmY');
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb+srv://ikyrenata:Djiky112@cluster0.hvjvoyi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+client.connect(err => {
+    if (err) throw err;
+    console.log('Connected to MongoDB!');
+    // Your bot's database logic here...
+});
