@@ -10,7 +10,10 @@ const userAnimals = {};
 const cooldowns = {};
 const userSlotStats = {};
 const userCooldowns = {};
+<<<<<<< HEAD
 const flipCooldown = new Set();
+=======
+>>>>>>> 92154144b1fcb6f92ff0899a84ce6e32317687a9
 const auctions = {};
 const userLumina = {};
 const userBuffs = {};
@@ -163,12 +166,15 @@ async function handleFlip(message, userId, args) {
     return message.reply("Usage: `!flip heads 100` or `!flip tails all`");
   }
 
+<<<<<<< HEAD
   if (flipCooldown.has(userId)) {
     return message.reply("You're flipping too fast! Please wait 5 seconds.");
   }
   flipCooldown.add(userId);
   setTimeout(() => flipCooldown.delete(userId), 5000);
 
+=======
+>>>>>>> 92154144b1fcb6f92ff0899a84ce6e32317687a9
   const user = getUser(message);
   let betAmount = parseInt(betInput);
   if (betInput === 'all') betAmount = Math.min(user.currency, 250000);
@@ -177,6 +183,7 @@ async function handleFlip(message, userId, args) {
   if (user.currency < betAmount) return message.reply("Not enough coins.");
 
   user.currency -= betAmount;
+<<<<<<< HEAD
 
   // Use visual fantasy-themed emojis (custom ones can be added later)
   const flipAnimation = ['<a:coinflip1:123456789012345678>', '<a:coinflip2:123456789012345679>', '<a:coinflip3:123456789012345680>'];
@@ -191,10 +198,22 @@ async function handleFlip(message, userId, args) {
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
   await delay(2500);
+=======
+  const embed = new EmbedBuilder()
+    .setTitle(`🪙 Flipping the Coin...`)
+    .setDescription("Flipping...")
+    .setColor(0xFFD700)
+    .setFooter({ text: `${message.author.username}'s Coin Flip`, iconURL: message.author.displayAvatarURL({ dynamic: true }) });
+
+  const sent = await message.channel.send({ embeds: [embed] });
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  await delay(2000);
+>>>>>>> 92154144b1fcb6f92ff0899a84ce6e32317687a9
 
   const result = Math.random() < 0.5 ? 'heads' : 'tails';
   const win = result === choice;
 
+<<<<<<< HEAD
   if (win) user.currency += betAmount * 2;
 
   embed
@@ -209,6 +228,17 @@ async function handleFlip(message, userId, args) {
         : `Bad luck! You lost **${betAmount.toLocaleString()}** coins.`
     );
 
+=======
+  embed
+    .setTitle(`🪙 It landed on: **${result.toUpperCase()}**`)
+    .setColor(win ? 0x00FF99 : 0xFF5555)
+    .setDescription(
+      win
+        ? `You guessed **${choice}** and won **${(betAmount * 2).toLocaleString()}** coins!`
+        : `Oops! You lost **${betAmount.toLocaleString()}** coins.`
+    );
+  if (win) user.currency += betAmount * 2;
+>>>>>>> 92154144b1fcb6f92ff0899a84ce6e32317687a9
   await sent.edit({ embeds: [embed] });
 }
 
@@ -319,3 +349,7 @@ function showHelp(message) {
 }
 
 client.login('MTM1ODIwNjM1Mzg3Mjc4MTQ0NA.G5BaXm.UAtlG2_jyC1Dz6aHhpCaAGckFO3e3MxT5zDm0w');
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 92154144b1fcb6f92ff0899a84ce6e32317687a9
