@@ -1,0 +1,71 @@
+2025-04-06T19:26:40: PM2 log: ===============================================================================
+2025-04-06T19:26:40: PM2 log: --- New PM2 Daemon started ----------------------------------------------------
+2025-04-06T19:26:40: PM2 log: Time                 : Sun Apr 06 2025 19:26:40 GMT+0700 (Western Indonesia Time)
+2025-04-06T19:26:40: PM2 log: PM2 version          : 6.0.5
+2025-04-06T19:26:40: PM2 log: Node.js version      : 23.10.0
+2025-04-06T19:26:40: PM2 log: Current arch         : arm64
+2025-04-06T19:26:40: PM2 log: PM2 home             : /data/data/com.termux/files/home/.pm2
+2025-04-06T19:26:40: PM2 log: PM2 PID file         : /data/data/com.termux/files/home/.pm2/pm2.pid
+2025-04-06T19:26:40: PM2 log: RPC socket file      : /data/data/com.termux/files/home/.pm2/rpc.sock
+2025-04-06T19:26:40: PM2 log: BUS socket file      : /data/data/com.termux/files/home/.pm2/pub.sock
+2025-04-06T19:26:40: PM2 log: Application log path : /data/data/com.termux/files/home/.pm2/logs
+2025-04-06T19:26:40: PM2 log: Worker Interval      : 30000
+2025-04-06T19:26:40: PM2 log: Process dump file    : /data/data/com.termux/files/home/.pm2/dump.pm2
+2025-04-06T19:26:40: PM2 log: Concurrent actions   : 2
+2025-04-06T19:26:40: PM2 log: SIGTERM timeout      : 1600
+2025-04-06T19:26:40: PM2 log: Runtime Binary       : /data/data/com.termux/files/usr/bin/node
+2025-04-06T19:26:40: PM2 log: ===============================================================================
+2025-04-06T19:26:41: PM2 log: App [bot:0] starting in -fork mode-
+2025-04-06T19:26:41: PM2 log: App [bot:0] online
+2025-04-06T19:26:41: PM2 warn: [pidusage] We couldn't find uptime from /proc/uptime, using os.uptime() value
+2025-04-06T19:32:38: PM2 log: ===============================================================================
+2025-04-06T19:32:38: PM2 log: --- New PM2 Daemon started ----------------------------------------------------
+2025-04-06T19:32:38: PM2 log: Time                 : Sun Apr 06 2025 19:32:38 GMT+0700 (Western Indonesia Time)
+2025-04-06T19:32:38: PM2 log: PM2 version          : 6.0.5
+2025-04-06T19:32:38: PM2 log: Node.js version      : 23.10.0
+2025-04-06T19:32:38: PM2 log: Current arch         : arm64
+2025-04-06T19:32:38: PM2 log: PM2 home             : /data/data/com.termux/files/home/.pm2
+2025-04-06T19:32:38: PM2 log: PM2 PID file         : /data/data/com.termux/files/home/.pm2/pm2.pid
+2025-04-06T19:32:38: PM2 log: RPC socket file      : /data/data/com.termux/files/home/.pm2/rpc.sock
+2025-04-06T19:32:38: PM2 log: BUS socket file      : /data/data/com.termux/files/home/.pm2/pub.sock
+2025-04-06T19:32:38: PM2 log: Application log path : /data/data/com.termux/files/home/.pm2/logs
+2025-04-06T19:32:38: PM2 log: Worker Interval      : 30000
+2025-04-06T19:32:38: PM2 log: Process dump file    : /data/data/com.termux/files/home/.pm2/dump.pm2
+2025-04-06T19:32:38: PM2 log: Concurrent actions   : 2
+2025-04-06T19:32:38: PM2 log: SIGTERM timeout      : 1600
+2025-04-06T19:32:38: PM2 log: Runtime Binary       : /data/data/com.termux/files/usr/bin/node
+2025-04-06T19:32:38: PM2 log: ===============================================================================
+2025-04-09T02:34:34: PM2 log: ===============================================================================
+2025-04-09T02:34:34: PM2 log: --- New PM2 Daemon started ----------------------------------------------------
+2025-04-09T02:34:34: PM2 log: Time                 : Wed Apr 09 2025 02:34:34 GMT+0700 (Western Indonesia Time)
+2025-04-09T02:34:34: PM2 log: PM2 version          : 6.0.5
+2025-04-09T02:34:34: PM2 log: Node.js version      : 23.10.0
+2025-04-09T02:34:34: PM2 log: Current arch         : arm64
+2025-04-09T02:34:34: PM2 log: PM2 home             : /data/data/com.termux/files/home/.pm2
+2025-04-09T02:34:34: PM2 log: PM2 PID file         : /data/data/com.termux/files/home/.pm2/pm2.pid
+2025-04-09T02:34:34: PM2 log: RPC socket file      : /data/data/com.termux/files/home/.pm2/rpc.sock
+2025-04-09T02:34:34: PM2 log: BUS socket file      : /data/data/com.termux/files/home/.pm2/pub.sock
+2025-04-09T02:34:34: PM2 log: Application log path : /data/data/com.termux/files/home/.pm2/logs
+2025-04-09T02:34:34: PM2 log: Worker Interval      : 30000
+2025-04-09T02:34:34: PM2 log: Process dump file    : /data/data/com.termux/files/home/.pm2/dump.pm2
+2025-04-09T02:34:34: PM2 log: Concurrent actions   : 2
+2025-04-09T02:34:34: PM2 log: SIGTERM timeout      : 1600
+2025-04-09T02:34:34: PM2 log: Runtime Binary       : /data/data/com.termux/files/usr/bin/node
+2025-04-09T02:34:34: PM2 log: ===============================================================================
+2025-04-09T02:34:59: PM2 log: ===============================================================================
+2025-04-09T02:34:59: PM2 log: --- New PM2 Daemon started ----------------------------------------------------
+2025-04-09T02:34:59: PM2 log: Time                 : Wed Apr 09 2025 02:34:59 GMT+0700 (Western Indonesia Time)
+2025-04-09T02:34:59: PM2 log: PM2 version          : 6.0.5
+2025-04-09T02:34:59: PM2 log: Node.js version      : 23.10.0
+2025-04-09T02:34:59: PM2 log: Current arch         : arm64
+2025-04-09T02:34:59: PM2 log: PM2 home             : /data/data/com.termux/files/home/.pm2
+2025-04-09T02:34:59: PM2 log: PM2 PID file         : /data/data/com.termux/files/home/.pm2/pm2.pid
+2025-04-09T02:34:59: PM2 log: RPC socket file      : /data/data/com.termux/files/home/.pm2/rpc.sock
+2025-04-09T02:34:59: PM2 log: BUS socket file      : /data/data/com.termux/files/home/.pm2/pub.sock
+2025-04-09T02:34:59: PM2 log: Application log path : /data/data/com.termux/files/home/.pm2/logs
+2025-04-09T02:34:59: PM2 log: Worker Interval      : 30000
+2025-04-09T02:34:59: PM2 log: Process dump file    : /data/data/com.termux/files/home/.pm2/dump.pm2
+2025-04-09T02:34:59: PM2 log: Concurrent actions   : 2
+2025-04-09T02:34:59: PM2 log: SIGTERM timeout      : 1600
+2025-04-09T02:34:59: PM2 log: Runtime Binary       : /data/data/com.termux/files/usr/bin/node
+2025-04-09T02:34:59: PM2 log: ===============================================================================

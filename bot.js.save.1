@@ -1,0 +1,105 @@
+const { Client, GatewayIntentBits } = require('discord.js'); const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const defaultPrefix = '!'; const guildPrefixes = {}; const userData = {}; const userWeapons = {}; const userAnimals = {}; const auctions = [];
+client.on('messageCreate', async (message) => { if (message.author.bot) return;
+const prefix = guildPrefixes[message.guild.id] || defaultPrefix;
+if (!message.content.startsWith(prefix)) return;
+
+const args = message.content.slice(prefix.length).trim().split(/ +/);
+const command = args.shift().toLowerCase();
+
+try {
+    switch (command) {
+        case 'setprefix': await changePrefix(message, args); break;
+        case 'battle': await startBattle(message); break;
+        case 'hunt': await goHunting(message); break;
+        case 'slot': await startSlotMachine(message, args); break;
+        case 'flip': await coinFlip(message, args); break;
+        case 'profile': await showProfile(message); break;
+        case 'balance': await showBalance(message); break;
+        case 'leaderboard': await showLeaderboard(message); break;
+        case 'sendcurrency': await sendCurrency(message, args); break;
+        case 'work': await work(message); break;
+        case 'admin': await adminCommand(message, args); break;
+        case 'auction': await auction(message, args); break;
+        case 'bid': await bid(message, args); break;
+        case 'trade': await tradeWeapons(message, args); break;
+        case 'inventory': await showInventory(message); break;
+        case 'zoo': await showZoo(message); break;
+        case 'help': await helpCommand(message); break;
+        default: message.channel.send('Unknown command!');
+    }
+} catch (error) {
+    console.error(`Error handling command ${command}:`, error);
+    message.channel.send('An error occurred while processing your request. Please try again later.');
+}
+
+});
+async function helpCommand(message) { const helpText = **UwUtopia Bot Commands:**\n + '!help - Show this help message\n' + '!profile - View your profile\n' + '!balance - Check your balance\n' + '!leaderboard - Show top players\n' + '!work - Earn currency\n' + '!hunt - Hunt animals for XP and animals\n' + '!battle - Battle for XP\n' + '!inventory - View your weapons\n' + '!zoo - View your animals\n' + '!slot - Play slot machine\n' + '!flip <heads/tails> - Flip a coin\n' + '!sendcurrency <@user> <amount> - Send currency\n' + '!trade <@user> <weapon1, weapon2...> - Trade weapons\n' + '!setprefix <newPrefix> - Change the bot prefix (admin only)\n' + '!admin <addxp|addcurrency|setlevel> <@user> <value> - Admin tools\n' + '!auction <weapon> - Start a weapon auction\n' + '!bid <amount> - Bid in an auction';
+await message.channel.send(helpText);
+
+}
+function getUser(message) { if (!userData[message.author.id]) { userData[message.author.id] = { xp: 0, currency: 0, level: 1, health: 100 }; } return userData[message.author.id]; }
+async function goHunting(message) { const animals = ['Tiger', 'Fox', 'Bear', 'Wolf']; const caught = animals[Math.floor(Math.random() * animals.length)]; const xp = Math.floor(Math.random() * 10) + 5; const user = getUser(message);
+user.xp += xp;
+if (!userAnimals[message.author.id]) userAnimals[message.author.id] = [];
+userAnimals[message.author.id].push(caught);
+
+message.channel.send(`${message.author.username} went hunting and caught a **${caught}**! Gained ${xp} XP.`);
+
+}
+async function startBattle(message) { const xp = Math.floor(Math.random() * 15) + 10; const user = getUser(message); user.xp += xp; message.channel.send(${message.author.username} battled bravely and earned ${xp} XP!); }
+async function startSlotMachine(message) { const items = ['🍒', '🍋', '🍊', '🍇', '💎']; const spin = () => items[Math.floor(Math.random() * items.length)]; const slots = [spin(), spin(), spin()]; const user = getUser(message);
+let result = `| ${slots.join(' | ')} |`;
+if (slots[0] === slots[1] && slots[1] === slots[2]) {
+    const win = 50;
+    user.currency += win;
+    result += `\nJackpot! You won ${win} coins!`;
+} else {
+    result += `\nNo match. Better luck next time!`;
+}
+message.channel.send(result);
+
+}
+async function coinFlip(message, args) { if (!args[0]) return message.channel.send("Call heads or tails."); const flip = Math.random() < 0.5 ? 'heads' : 'tails'; const win = args[0].toLowerCase() === flip; message.channel.send(Coin landed on **${flip}**. You ${win ? 'won!' : 'lost.'}); }
+async function work(message) { const earnings = Math.floor(Math.random() * 20) + 10; const user = getUser(message); user.currency += earnings; message.channel.send(${message.author.username} worked and earned ${earnings} coins!); }
+async function showBalance(message) { const user = getUser(message); message.channel.send(${message.author.username}, your balance is ${user.currency} coins.); }
+async function showProfile(message) { const user = getUser(message); message.channel.send(**${message.author.username}'s Profile**\nLevel: ${user.level}\nXP: ${user.xp}\nCurrency: ${user.currency}\nHealth: ${user.health}); }
+async function showInventory(message) { const weapons = userWeapons[message.author.id] || []; message.channel.send(${message.author.username}'s Inventory:\n${weapons.join(', ') || 'No weapons'}); }
+async function showZoo(message) { const animals = userAnimals[message.author.id] || []; message.channel.send(${message.author.username}'s Zoo:\n${animals.join(', ') || 'No animals'}); }
+async function showLeaderboard(message) { const sorted = Object.entries(userData).sort((a, b) => b[1].xp - a[1].xp).slice(0, 5); const board = sorted.map(([id, data], i) => ${i + 1}. <@${id}> - ${data.xp} XP).join('\n'); message.channel.send(**Leaderboard:**\n${board}); }
+async function sendCurrency(message, args) { const target = message.mentions.users.first(); const amount = parseInt(args[1]); const user = getUser(message);
+if (!target || isNaN(amount) || amount <= 0) return message.channel.send("Usage: !sendcurrency @user amount");
+if (user.currency < amount) return message.channel.send("You don't have enough coins.");
+
+user.currency -= amount;
+getUser({ author: target }).currency += amount;
+
+message.channel.send(`Sent ${amount} coins to ${target.username}.`);
+
+}
+async function adminCommand(message, args) { if (!message.member.permissions.has("Administrator")) return;
+const subcommand = args[0];
+const target = message.mentions.users.first();
+const value = parseInt(args[2]);
+const targetData = getUser({ author: target });
+
+if (!target || isNaN(value)) return message.channel.send("Invalid command.");
+switch (subcommand) {
+    case 'addxp': targetData.xp += value; break;
+    case 'addcurrency': targetData.currency += value; break;
+    case 'setlevel': targetData.level = value; break;
+    default: return message.channel.send("Unknown admin command.");
+}
+message.channel.send(`Admin command ${subcommand} applied to ${target.username}.`);
+
+}
+async function changePrefix(message, args) { if (!message.member.permissions.has("Administrator")) return; const newPrefix = args[0]; if (!newPrefix) return message.channel.send("Usage: !setprefix "); guildPrefixes[message.guild.id] = newPrefix; message.channel.send(Prefix changed to ${newPrefix}); }
+async function auction(message, args) { const weapon = args.join(' '); if (!weapon) return message.channel.send("Specify a weapon to auction."); auctions.push({ weapon, seller: message.author.id, highestBid: 0, highestBidder: null }); message.channel.send(Auction started for ${weapon}! Use !bid <amount> to participate.); }
+async function bid(message, args) { const amount = parseInt(args[0]); const user = getUser(message); const auction = auctions[auctions.length - 1];
+if (!auction || isNaN(amount)) return message.channel.send("No active auction or invalid amount.");
+if (amount <= auction.highestBid) return message.channel.send("Bid higher than the current highest bid.");
+if (user.currency < amount) return message.channel.send("Not enough currency.");
+
+auction.highestBid = amount;
+auction.highestBidder = message.author.id;
+message.channel.send(`${message.

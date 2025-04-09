@@ -1,0 +1,29 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/npm
+1 info using npm@10.9.2
+2 info using node@v23.10.0
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/.npmrc
+5 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+6 verbose title npm install mangodb
+7 verbose argv "install" "mangodb"
+8 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2025-04-06T01_51_58_831Z-
+9 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2025-04-06T01_51_58_831Z-debug-0.log
+10 silly logfile done cleaning log files
+11 silly packumentCache heap:975437824 maxSize:243859456 maxEntrySize:121929728
+12 silly idealTree buildDeps
+13 silly fetch manifest mangodb@*
+14 silly packumentCache full:https://registry.npmjs.org/mangodb cache-miss
+15 http fetch GET 200 https://registry.npmjs.org/mangodb 1336ms (cache miss)
+16 silly packumentCache full:https://registry.npmjs.org/mangodb set size:undefined disposed:false
+17 silly placeDep ROOT mangodb@1.0.0 OK for:  want: *
+18 silly reify moves {}
+19 http cache mangodb@https://registry.npmjs.org/mangodb/-/mangodb-1.0.0.tgz 1ms (cache hit)
+20 silly tarball no local data for mangodb@https://registry.npmjs.org/mangodb/-/mangodb-1.0.0.tgz. Extracting by manifest.
+21 http fetch GET 200 https://registry.npmjs.org/mangodb/-/mangodb-1.0.0.tgz 141ms (cache miss)
+22 silly ADD node_modules/mangodb
+23 verbose cwd /data/data/com.termux/files/home
+24 verbose os Linux 4.14.180-perf+
+25 verbose node v23.10.0
+26 verbose npm  v10.9.2
+27 verbose exit 0
+28 info ok
